@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { teamStats } from '../data';
+import { teamStats, matches } from '../data';
 import { ArrowUp, ArrowDown, Minus } from 'lucide-react';
 
 const renderForm = (form: ('W' | 'D' | 'L')[]) => {
