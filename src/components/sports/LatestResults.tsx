@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 interface Match {
-  id: string;
+  id: number;  // Changed from string to number
   homeTeam: string;
   awayTeam: string;
   homeScore: number;

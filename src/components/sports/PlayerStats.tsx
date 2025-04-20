@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { cn } from '@/lib/utils';
 
 interface PlayerStat {
-  id: string;
+  id: string | number;  // Updated to accept both string and number
   name: string;
   team: string;
   matches: number;
@@ -39,7 +39,7 @@ const PlayerStats = ({ stats, className }: PlayerStatsProps) => {
           </TableHeader>
           <TableBody>
             {stats.map((player) => (
-              <TableRow key={player.id}>
+              <TableRow key={player.id.toString()}>
                 <TableCell className="font-medium">{player.name}</TableCell>
                 <TableCell>{player.team}</TableCell>
                 <TableCell className="text-center">{player.matches}</TableCell>

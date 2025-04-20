@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { cn } from '@/lib/utils';
 
 interface TeamStats {
-  id: string;
+  id: number;  // Changed from string to number
   position: number;
   teamName: string;
   played: number;
