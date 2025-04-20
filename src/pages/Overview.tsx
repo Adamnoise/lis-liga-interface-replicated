@@ -2,6 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { matches, teamStats } from '../data';
+import PlayerCard from '../components/sports/PlayerCard';
+import LatestResults from '../components/sports/LatestResults';
+import Standings from '../components/sports/Standings';
+import Scoreboard from '../components/sports/Scoreboard';
+import PlayerStats from '../components/sports/PlayerStats';
 
 const Overview: React.FC = () => {
   // Get the league leader (team at position 1)
@@ -24,151 +29,66 @@ const Overview: React.FC = () => {
       return b.time.localeCompare(a.time);
     })
     .slice(0, 5);
-  
+
+  // Mock data for player stats
+  const mockPlayerStats = [
+    {
+      id: '1',
+      name: 'John Doe',
+      team: 'Team A',
+      matches: 15,
+      goals: 10,
+      assists: 5,
+      rating: 8.5
+    },
+    // ... more players
+  ];
+
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        {/* League Leader */}
-        <div>
-          <h2 className="text-xl font-bold mb-3">Liga Vezető</h2>
-          {leagueLeader && (
-            <div className="bg-white p-4 shadow-md">
-              <div className="flex items-center justify-between">
-                <Link to={`/csapatok/${leagueLeader.teamName}`} className="text-xl font-bold hover:underline">
-                  {leagueLeader.teamName}
-                </Link>
-                <div className="text-2xl font-bold">{leagueLeader.points} pont</div>
-              </div>
-              
-              <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-                <div>
-                  <div className="font-bold">{leagueLeader.played}</div>
-                  <div className="text-sm text-gray-600">Játszott</div>
-                </div>
-                <div>
-                  <div className="font-bold">{leagueLeader.won}</div>
-                  <div className="text-sm text-gray-600">Győzelem</div>
-                </div>
-                <div>
-                  <div className="font-bold">{leagueLeader.goalDifference}</div>
-                  <div className="text-sm text-gray-600">Gólkül.</div>
-                </div>
-              </div>
-              
-              <div className="mt-3">
-                <div className="text-sm font-medium">Forma</div>
-                <div className="flex mt-1 space-x-1">
-                  {leagueLeader.form.map((result, index) => (
-                    <div 
-                      key={index}
-                      className={`w-5 h-5 flex items-center justify-center text-xs text-white font-bold ${
-                        result === 'W' ? 'bg-green-500' : 
-                        result === 'D' ? 'bg-yellow-500' : 'bg-red-500'
-                      }`}
-                    >
-                      {result === 'W' ? 'W' : result === 'D' ? 'D' : 'L'}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-        
-        {/* Next Round */}
-        <div>
-          <h2 className="text-xl font-bold mb-3">Következő Forduló</h2>
-          <div className="bg-white shadow-md">
-            <div className="bg-gray-800 text-white p-2">
-              <div className="text-center">Forduló 6</div>
-              <div className="text-center text-sm">20/04/25</div>
-            </div>
-            
-            {upcomingMatches.map((match, index) => (
-              <div key={index} className="border-b p-3 flex justify-between items-center">
-                <div className="flex-1 text-right pr-2 font-medium">{match.homeTeam}</div>
-                <div className="px-2 text-gray-500">vs</div>
-                <div className="flex-1 pl-2 font-medium">{match.awayTeam}</div>
-                <div className="ml-4 text-sm text-gray-500">{match.time}</div>
-              </div>
-            ))}
-            
-            <div className="p-2 text-center">
-              <Link to="/menetrend" className="text-blue-600 hover:underline text-sm">
-                Teljes menetrend
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+    <div className="space-y-6">
+      {/* Featured Player */}
+      <PlayerCard
+        name="John Doe"
+        position="Csatár"
+        team="Team A"
+        imageUrl="/placeholder.svg"
+        stats={{
+          matches: 15,
+          goals: 10,
+          assists: 5
+        }}
+      />
+
+      {/* Latest Results and Standings Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Recent Results */}
-        <div>
-          <h2 className="text-xl font-bold mb-3">Legutóbbi Eredmények</h2>
-          <div className="bg-white shadow-md">
-            {recentMatches.map((match, index) => (
-              <div key={index} className="border-b p-3 flex justify-between items-center">
-                <div className="flex-1 text-right pr-2 font-medium">{match.homeTeam}</div>
-                <div className="px-3 font-bold">{match.fulltimeScore}</div>
-                <div className="flex-1 pl-2 font-medium">{match.awayTeam}</div>
-                <div className="ml-4 text-sm text-gray-500">{match.date}</div>
-              </div>
-            ))}
-            
-            <div className="p-2 text-center">
-              <Link to="/tabellak" className="text-blue-600 hover:underline text-sm">
-                Összes eredmény
-              </Link>
-            </div>
-          </div>
-        </div>
+        <LatestResults 
+          matches={recentMatches.map(match => ({
+            id: match.id,
+            homeTeam: match.homeTeam,
+            awayTeam: match.awayTeam,
+            homeScore: parseInt(match.fulltimeScore?.split(':')[0] || '0'),
+            awayScore: parseInt(match.fulltimeScore?.split(':')[1] || '0'),
+            date: match.date,
+            time: match.time
+          }))} 
+        />
         
-        {/* Top Teams */}
-        <div>
-          <h2 className="text-xl font-bold mb-3">Top 5 Csapat</h2>
-          <div className="bg-white shadow-md">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="p-2">Poz.</th>
-                    <th className="p-2 text-left">Csapat</th>
-                    <th className="p-2">M</th>
-                    <th className="p-2">GY</th>
-                    <th className="p-2">D</th>
-                    <th className="p-2">V</th>
-                    <th className="p-2">P</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {teamStats.slice(0, 5).map((team) => (
-                    <tr key={team.id} className="border-b hover:bg-gray-50">
-                      <td className="p-2 text-center">{team.position}</td>
-                      <td className="p-2 font-medium">
-                        <Link to={`/csapatok/${team.teamName}`} className="hover:underline">
-                          {team.teamName}
-                        </Link>
-                      </td>
-                      <td className="p-2 text-center">{team.played}</td>
-                      <td className="p-2 text-center">{team.won}</td>
-                      <td className="p-2 text-center">{team.drawn}</td>
-                      <td className="p-2 text-center">{team.lost}</td>
-                      <td className="p-2 text-center font-bold">{team.points}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            
-            <div className="p-2 text-center">
-              <Link to="/tabellak" className="text-blue-600 hover:underline text-sm">
-                Teljes tabella
-              </Link>
-            </div>
-          </div>
-        </div>
+        <Standings stats={teamStats.slice(0, 5)} />
       </div>
+
+      {/* Next Match Scoreboard */}
+      {upcomingMatches[0] && (
+        <Scoreboard
+          homeTeam={upcomingMatches[0].homeTeam}
+          awayTeam={upcomingMatches[0].awayTeam}
+          homeScore={0}
+          awayScore={0}
+          matchTime={`${upcomingMatches[0].date} ${upcomingMatches[0].time}`}
+        />
+      )}
+
+      {/* Player Stats */}
+      <PlayerStats stats={mockPlayerStats} />
     </div>
   );
 };
