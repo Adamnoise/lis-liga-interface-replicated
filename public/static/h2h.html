@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H2H - Virtuális Labdarúgás Liga</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Same header and navigation as index.html -->
+    <header class="bg-gray-700 text-white p-4">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div>
+                    <div class="text-sm mb-1">NYITÓLAP/LABDARÚGÁS/VIRTUÁLIS LABDARÚGÁS</div>
+                    <h1 class="text-xl font-semibold">Virtuális Labdarúgás Liga Mód Retail 20424</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-gray-600 text-white">
+        <div class="container mx-auto flex overflow-x-auto">
+            <a href="index.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Áttekintés</a>
+            <a href="h2h.html" class="px-4 py-3 whitespace-nowrap bg-gray-700">H-2-H</a>
+            <a href="menetrend.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Menetrend</a>
+            <a href="tabellak.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Tabellák</a>
+            <a href="csapatok.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Csapatok</a>
+            <a href="archiv.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Archív</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <div class="bg-white p-4 rounded shadow">
+            <h2 class="text-xl font-bold mb-4">Csapatok Összehasonlítása</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Csapat 1</label>
+                    <select class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">Válassz csapatot</option>
+                        <option value="team_a">Team A</option>
+                        <option value="team_b">Team B</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Csapat 2</label>
+                    <select class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">Válassz csapatot</option>
+                        <option value="team_a">Team A</option>
+                        <option value="team_b">Team B</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="w-full bg-gray-700 text-white py-2 rounded">
+                Összehasonlítás
+            </button>
+        </div>
+    </main>
+</body>
+</html>

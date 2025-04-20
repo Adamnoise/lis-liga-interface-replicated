@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áttekintés - Virtuális Labdarúgás Liga</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-gray-700 text-white p-4">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div>
+                    <div class="text-sm mb-1">NYITÓLAP/LABDARÚGÁS/VIRTUÁLIS LABDARÚGÁS</div>
+                    <h1 class="text-xl font-semibold">Virtuális Labdarúgás Liga Mód Retail 20424</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-gray-600 text-white">
+        <div class="container mx-auto flex overflow-x-auto">
+            <a href="index.html" class="px-4 py-3 whitespace-nowrap bg-gray-700">Áttekintés</a>
+            <a href="h2h.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">H-2-H</a>
+            <a href="menetrend.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Menetrend</a>
+            <a href="tabellak.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Tabellák</a>
+            <a href="csapatok.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Csapatok</a>
+            <a href="archiv.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Archív</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-xl font-bold mb-4">Legutóbbi Eredmények</h2>
+                <div class="space-y-4">
+                    <div class="p-3 bg-gray-50 rounded-lg flex items-center justify-between">
+                        <div class="flex-1 text-right pr-4 font-medium">Team A</div>
+                        <div class="px-4 font-bold">2 - 1</div>
+                        <div class="flex-1 pl-4 font-medium">Team B</div>
+                        <div class="text-sm text-gray-500 ml-4">2024-04-19</div>
+                    </div>
+                    <!-- More matches -->
+                </div>
+            </div>
+            
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-xl font-bold mb-4">Tabella</h2>
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b">
+                            <th class="p-2 text-left">Helyezés</th>
+                            <th class="p-2 text-left">Csapat</th>
+                            <th class="p-2 text-center">P</th>
+                            <th class="p-2 text-center">GK</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="p-2">1.</td>
+                            <td class="p-2">Team A</td>
+                            <td class="p-2 text-center">45</td>
+                            <td class="p-2 text-center">+20</td>
+                        </tr>
+                        <!-- More teams -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

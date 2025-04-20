@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archív - Virtuális Labdarúgás Liga</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Same header and navigation as index.html -->
+    <header class="bg-gray-700 text-white p-4">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div>
+                    <div class="text-sm mb-1">NYITÓLAP/LABDARÚGÁS/VIRTUÁLIS LABDARÚGÁS</div>
+                    <h1 class="text-xl font-semibold">Virtuális Labdarúgás Liga Mód Retail 20424</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-gray-600 text-white">
+        <div class="container mx-auto flex overflow-x-auto">
+            <a href="index.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Áttekintés</a>
+            <a href="h2h.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">H-2-H</a>
+            <a href="menetrend.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Menetrend</a>
+            <a href="tabellak.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Tabellák</a>
+            <a href="csapatok.html" class="px-4 py-3 whitespace-nowrap hover:bg-gray-500">Csapatok</a>
+            <a href="archiv.html" class="px-4 py-3 whitespace-nowrap bg-gray-700">Archív</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <div class="bg-white rounded shadow overflow-x-auto">
+            <div class="bg-gray-700 text-white p-2 mb-2">
+                <h2 class="text-center">Archív</h2>
+            </div>
+            
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="p-3 text-left">Szezon</th>
+                        <th class="p-3 text-left">Győztes</th>
+                        <th class="p-3 text-left">Második hely</th>
+                        <th class="p-3 text-left">Harmadik hely</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b hover:bg-gray-100">
+                        <td class="p-3">2023</td>
+                        <td class="p-3">Team A</td>
+                        <td class="p-3">Team B</td>
+                        <td class="p-3">Team C</td>
+                    </tr>
+                    <!-- More seasons -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-4 text-center">
+            <button class="bg-gray-700 text-white px-4 py-2 rounded">
+                Több mutatása
+            </button>
+        </div>
+    </main>
+</body>
+</html>
